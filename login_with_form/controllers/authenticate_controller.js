@@ -4,8 +4,10 @@ module.exports.authenticate=function(req,res){
     var email=req.body.email;
     var password=req.body.password;
 
+   //app.use(express.static(__dirname + '/views'));
+
     app.get('/', function (req, res) {
-        res.render('login');
+        res.render('login.ejs');
     });
 
     app.post('/login', function (error, conn) {
@@ -14,7 +16,7 @@ module.exports.authenticate=function(req,res){
             if (error) {
                 res.json({
                     status:false,
-                    message:'there are some error with query'
+                    message:'There are some error with query'
                 })
             }
             else
@@ -33,7 +35,6 @@ module.exports.authenticate=function(req,res){
                             message:"Email and password does not match"
                         });
                     }
-
                 }
                 else{
                     res.send('Email not found');
